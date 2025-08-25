@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 import glob
-import os   #Imported here if your image reading methodolgy uses os.listdirectory sort of implementation.
+import os 
 from Hog_feature.Hog_feature.hog import initialize
 from Hog_feature.Hog_feature.hog import extract
 from matplotlib import pyplot as plt
@@ -16,19 +16,19 @@ from scipy import linalg
 # ConvSequential-SLAM Parameters
 magic_width = 512
 magic_height = 512
-cell_size = 16  # HOG cell-size
-bin_size = 8  # HOG bin size
-image_frames = 1  # 1 for grayscale, 3 for RGB
-descriptor_depth = bin_size*4*image_frames # x4 is here for block normalization due to nature of HOG
+cell_size = 16     # HOG cell-size
+bin_size = 8       # HOG bin size
+image_frames = 1   # 1 for grayscale, 3 for RGB
+descriptor_depth = bin_size*4*image_frames      # x4 is here for block normalization due to nature of HOG
 
 k = min_k = 1
 max_k = 25
-max_overlap = 15 # Corresponds to max_K_IG in the paper
-ET = 0.5  # Entropy threshold, can vary between 0-1
-IT = 0.9  # Overlapping threshold, can vary between 0-1
+max_overlap = 15  # Corresponds to max_K_IG in the paper
+ET = 0.5          # Entropy threshold, can vary between 0-1
+IT = 0.9          # Overlapping threshold, can vary between 0-1
 
-total_Query_Images = 100
-total_Ref_Images = 100
+total_Query_Images = 100  # Number of images in the query folder 
+total_Ref_Images = 100    # Number of images in the reference folder
 query_index_offset = 0
 ref_index_offset = 0
 
@@ -49,11 +49,12 @@ save_visual_matches_dir = 'Visual_Matches/' + dataset_name + '/'
 os.makedirs(save_visual_matches_dir, exist_ok=True)
 
 # NOTE: Update the query and reference image paths below to point to your own dataset
-query_directory = '/home/mihnea/CoHOG_Results_RAL2019/campus_loop_original/live/'
-ref_directory = '/home/mihnea/CoHOG_Results_RAL2019/campus_loop_original/memory/'
+query_directory = '/home/mihnea/datasets/campus_loop_original/live/'
+ref_directory = '/home/mihnea/datasets/campus_loop_original/memory/'
 
 # Please modify. This directory is for visualizing the entropy-based regions extraction
-out_directory = '/media/mihnea/HDD/DOCTORAT/ConvSequential-SLAM/entropy_extracted_regions/'
+out_directory = '/media/mihnea/ConvSequential-SLAM/entropy_extracted_regions/'
+
 
 #For visualizing the correct and incorrect matches
 def save_visual_matches(query,GT,retrieved):

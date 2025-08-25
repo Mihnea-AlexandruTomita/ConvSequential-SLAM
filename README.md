@@ -11,13 +11,13 @@ Published in IEEE Access, vol. 9, pp. 118673-118683, 2021 and available 📑 [he
 
 Visual Place Recognition (VPR) is the task of recognizing previously visited locations despite changes in viewpoint and appearance. Existing handcrafted methods often fail under strong appearance variations, while deep-learning approaches require heavy computation and extensive training.
 
-**ConvSequential-SLAM** is a sequence-based, handcrafted VPR technique that achieves state-of-the-art performance under challenging conditions. The method leverages:
+**ConvSequential-SLAM** is a sequence-based, training-less VPR technique that achieves state-of-the-art performance under viewpoint and appearance variations. The method leverages:
 - **Convolutional matching** to improve robustness to moderate viewpoint variations.
 - **Regional, block-normalized HOG descriptors** to achieve conditional invariance without relying on contrast-enhanced pixel matching.
-- **Information-gain** analysis from consecutive query images to determine the minimum sequence length needed, tailored specifically for ConvSequential-SLAM.
+- **Information-gain analysis from consecutive query images** to determine the minimum sequence length needed, tailored specifically for ConvSequential-SLAM.
 - **Entropy-based salient region extraction** to dynamically adjust the sequence length based on the environment, rather than using a fixed length as in traditional sequence-based VPR techniques.
 
-> Note: This repository also provides a version of ConvSequential-SLAM that uses a static (fixed) sequence length in addition to the dynamic sequence length version described above. We discuss both versions in more detail in the *Running ConvSequential-SLAM* section of this repo.
+> Note: This repository also provides a version of ConvSequential-SLAM that uses a static (fixed) sequence length in addition to the dynamic sequence length version described above. We discuss how to run both versions in more detail in the *Running ConvSequential-SLAM* section of this repo.
 
 ## ⚙️ Installation / Setup
 

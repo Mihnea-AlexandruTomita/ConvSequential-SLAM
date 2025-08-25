@@ -44,15 +44,16 @@ matched_local_pairs = []
 # Please modify according to your needs
 dataset_name = 'Campus_loop'
 save_visual_matches_dir = 'Visual_Matches/' + dataset_name + '/'
-# If the directory doesn't exist already
-#os.makedirs(save_visual_matches_dir)
+
+# Create directory vor visual matches
+os.makedirs(save_visual_matches_dir, exist_ok=True)
 
 # NOTE: Update the query and reference image paths below to point to your own dataset
-query_directory = '/home/mihnea/datasets/campus_loop_original/live/'
-ref_directory = '/home/mihnea/datasets/campus_loop_original/memory/'
+query_directory = '/home/mihnea/CoHOG_Results_RAL2019/campus_loop_original/live/'
+ref_directory = '/home/mihnea/CoHOG_Results_RAL2019/campus_loop_original/memory/'
 
 # Please modify. This directory is for visualizing the entropy-based regions extraction
-out_directory = '/home/mihnea/ConvSequential-SLAM/entropy_extracted_regions/'
+out_directory = '/media/mihnea/HDD/DOCTORAT/ConvSequential-SLAM/entropy_extracted_regions/'
 
 #For visualizing the correct and incorrect matches
 def save_visual_matches(query,GT,retrieved):
@@ -283,7 +284,13 @@ while(len(query_set) < total_Query_Images):
 		my_writer = csv.writer(csvfile, delimiter=',', quotechar=' ', quoting=csv.QUOTE_MINIMAL)
 		row = str(number_of_images_matched) + ',' + str(np.argmax(ref_template_score)) + ',' + str(np.amax(ref_template_score)) + ',' + str(k_list[number_of_images_matched]) + ',' + str(sequential_entropy_averaged_list[number_of_images_matched])
 		my_writer.writerow([row])
-        csvfile.close()
-
+    
+    	# Save visualization 
+    	save_visual_matches(
+        	number_of_images_matched,       # query
+        	number_of_images_matched,       # GT 
+        	np.argmax(ref_template_score)   # retrieved
+    	)
+    
 	number_of_images_matched = number_of_images_matched + 1
 print("Total query images read: " + str(len(query_set)))

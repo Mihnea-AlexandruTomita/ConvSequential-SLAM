@@ -45,15 +45,16 @@ matched_local_pairs = []
 dataset_name = 'Campus_loop'
 save_visual_matches_dir = 'Visual_Matches/' + dataset_name + '/'
 
-# Create directory vor visual matches
-os.makedirs(save_visual_matches_dir, exist_ok=True)
+# Create directory for visual matches if it doesn't exist
+if not os.path.exists(save_visual_matches_dir):
+	os.makedirs(save_visual_matches_dir)
 
 # NOTE: Update the query and reference image paths below to point to your own dataset
 query_directory = '/home/mihnea/datasets/campus_loop_original/live/'
 ref_directory = '/home/mihnea/datasets/campus_loop_original/memory/'
 
 # Please modify. This directory is for visualizing the entropy-based regions extraction
-out_directory = '/media/mihnea/ConvSequential-SLAM/entropy_extracted_regions/'
+out_directory = '/media/mihnea/ConvSequential-SLAM/'
 
 
 #For visualizing the correct and incorrect matches
@@ -84,6 +85,7 @@ def save_visual_matches(query,GT,retrieved):
 #    plt.show()
     
     fig.savefig(save_visual_matches_dir+str(query)+'.jpg',bbox_inches='tight')
+    plt.close(fig)
 
 def largest_indices_thresholded(ary):
     good_list = np.where(ary>=ET)

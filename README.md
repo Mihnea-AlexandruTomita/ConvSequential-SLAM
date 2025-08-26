@@ -61,9 +61,9 @@ W1 = H1 = 512
 W2 = H2 = 16      # HOG cell-size
 L = 8             # HOG bin size
 ET = 0.5          # Entropy threshold (0-1)
-IT = 0.9          # Overlapping threshold (0-1)
+IT = 0.9          # Information threshold (0-1)
 min_k = 1
-max_k_IG = 15     # Corresponds to max_overlap in the code
+max_k_IG = 15     
 max_k = 25
 </pre>
 
@@ -116,7 +116,7 @@ ConvSequential-SLAM extracts salient regions depending on the entropy threshold 
 </div>
 
 ## 📊 Example Output
-After running ConvSequential-SLAM, the results are saved in `Results_ConvSequential-SLAM.csv`. The below table shows the first 6 entries as an example; the full CSV contains the data for the entire dataset.
+After running ConvSequential-SLAM, the results are saved in `Results_ConvSequential-SLAM.csv`. The program generates the complete results for the dataset, with the table below showing the first six entries as an example.
 
 <div align="center">
 <table>
